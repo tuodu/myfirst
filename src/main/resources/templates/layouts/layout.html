@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="ThemeBucket">
+    <link rel="shortcut icon" th:href="@{/images/favicon.ico}" type="image/ico">
+
+    <title>CLASH_ROYAL</title>
+
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+    <link th:href="@{/css/style-responsive.css}" rel="stylesheet">
+    <link th:href="@{/css/owl.carousel.css}" rel="stylesheet">
+    <link th:href="@{/css/owl.theme.css}" rel="stylesheet">
+
+    <link th:href="@{/js/data-tables/datatables.min.css}" rel="stylesheet"/>
+    <link th:href="@{/js/data-tables/datatables.css}" rel="stylesheet"/>
+    <link th:href="@{/js/ztree/zTreeStyle.css}" rel="stylesheet"/>
+    <link th:href="@{/js/jquery-autocomplete/jquery.autocomplete.css}" rel="stylesheet"/>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script th:src="@{/js/html5shiv.js}"></script>
+    <script th:src="@{/js/respond.min.js}"></script>
+    <![endif]-->
+
+</head>
+
+<body class="sticky-header">
+
+<section>
+
+    <div th:replace="fragments/leftSide :: left_side">
+        <p>LeftSide goes here...</p>
+    </div>
+
+    <div class="main-content">
+        <div th:replace="fragments/header :: header_section">
+            <p>HeaderSection goes here...</p>
+        </div>
+
+        <div layout:fragment="page_content">
+            <p>Content goes here...</p>
+        </div>
+        <!--<div th:replace="@{fragments/footer}"></div>-->
+        <!-- Modal -->
+        <div aria-hidden="true" aria-labelledby="myModalLabel" role="dialog" tabindex="-1" id="userModel"
+             class="modal fade">
+            <div class="modal-dialog" style="width: 50%">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                        <h4 class="modal-title">个人信息</h4>
+                    </div>
+                    <div class="modal-body">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-lg-4 col-sm-4 control-label">登录帐号</label>
+                                    <div id="username" class="col-md-7"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-lg-4 col-sm-4 control-label">真实姓名</label>
+                                    <div id="realName" class="col-md-7"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-lg-4 col-sm-4 control-label">昵称</label>
+                                    <div id="nickname" class="col-md-7"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-lg-4 col-sm-4 control-label">姓别</label>
+                                    <div id="sex" class="col-md-7"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-lg-4 col-sm-4 control-label">电子邮箱</label>
+                                    <div id="email" class="col-md-7"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-lg-4 col-sm-4 control-label">手机号码</label>
+                                    <div id="mobile" class="col-md-7"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-lg-4 col-sm-4 control-label">固定电话</label>
+                                    <div id="phone" class="col-md-7"></div>
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="form-group">
+                                    <label class="col-lg-4 col-sm-4 control-label">描述</label>
+                                    <div id="description" class="col-md-7"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="text-align: right">
+                            <button data-dismiss="modal" class="btn btn-default" type="button">取消</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="changePasswordModel" tabindex="-1" role="dialog"
+             aria-labelledby="myModalLabel" aria-hidden="true">
+            <div class="modal-dialog" style="width: 30%">
+                <form action="" id="changePasswordForm" data-role="" class="cmxform form-horizontal ">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">&times;</button>
+                            <h4 class="modal-title">修改密码</h4>
+                        </div>
+                        <div class="modal-body">
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">*原密码</label>
+                                <div class="col-md-7">
+                                        <span class="password-security" passwordId="oldPassword">
+                                            <input name="oldPassword" id="oldPassword" type="password"
+                                                   class="form-control" data-msgs="原密码不能为空" data-rules="required:true"
+                                                   autocomplete="off" placeholder="原密码"/>
+                                        </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-sm-4 control-label">*新密码</label>
+                                <div class="col-md-7">
+                                        <span class="password-security" passwordId="newPassword">
+                                            <input name="newPassword" id="newPassword" type="password"
+                                                   class="form-control" data-rules="required:true;passWordCheck:true"
+                                                   data-msgs="密码不能为空;密码必须是大小写字母+数字的组合，并且长度在8-18位（可以有特殊符号)"
+                                                   autocomplete="off" placeholder="新密码"/>
+                                        </span>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label class="col-lg-4 control-label">*确认新密码</label>
+                                <div class="col-md-7">
+                                        <span class="password-security" passwordId="reTypePassword">
+                                            <input name="reTypePassword" id="reTypePassword" type="password"
+                                                   class="form-control" data-rules="required:true;passWordCheck:true"
+                                                   data-msgs="密码不能为空;密码必须是大小写字母+数字的组合，并且长度在8-18位（可以有特殊符号)"
+                                                   autocomplete="off" placeholder="确认新密码"/>
+                                        </span>
+                                </div>
+                            </div>
+                            <div style="text-align: right">
+                                <button class="btn btn-warning btn-sm" id="changePasswordBtn" type="button">
+                                    提交
+                                </button>
+                                <button data-btn="close" data-dismiss="modal" class="btn btn-default btn-sm"
+                                        type="button">
+                                    取消
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <!-- modal -->
+</section>
+
+<script th:src="@{/js/jquery-1.10.2.min.js}"></script>
+<!--<script th:src="@{/js/jquery-ui-1.9.2.custom.min.js}"></script>-->
+<script th:src="@{/js/jquery-migrate-1.2.1.min.js}"></script>
+<script th:src="@{/js/bootstrap.min.js}"></script>
+<script th:src="@{/js/modernizr.min.js}"></script>
+<script th:src="@{/js/jquery.nicescroll.js}"></script>
+<!--<script th:src="@{/js/scripts.js}"></script>-->
+<script th:src="@{/js/ztree/jquery.ztree.core.min.js}"></script>
+<script th:src="@{/js/ztree/jquery.ztree.excheck.min.js}"></script>
+<script th:src="@{/js/owl.carousel.js}"></script>
+
+
+<script th:src="@{/js/bootstrap-confirmation.min.js}"></script>
+<script th:src="@{/js/data-tables/datatables.min.js}"></script>
+<script th:src="@{/js/jquery.validate.min.js}"></script>
+<script th:src="@{/js/jquery.validate.additional.js}"></script>
+
+<script th:src="@{/js/jquery-autocomplete/jquery.autocomplete.min.js}"></script>
+<script type="text/javascript" th:inline="javascript">
+    var crCtx = [[${#request.getContextPath()}]];
+</script>
+<script th:src="@{/pageJs/PagePrompts.js}"></script>
+<script th:src="@{/pageJs/PageFormat.js}"></script>
+<script th:src="@{/pageJs/PageUtils.js}"></script>
+<script th:src="@{/pageJs/PageDataTable.js}"></script>
+<script th:src="@{/pageJs/PageAddAndEdit.js}"></script>
+<script th:src="@{/pageJs/PageButton.js}"></script>
+
+<script th:replace="fragments/leftSide :: left_script"></script>
+
+<script layout:fragment="page_script"></script>
+
+<!--CFCA密码控件JS-->
+<script th:src="@{/js/cfcasip/CFCASIPInput.min.js}"></script>
+<script th:src="@{/js/baofoo.security.js}"></script>
+
+<!--<script type="text/javascript">-->
+    <!--jQuery(function ($) {-->
+        <!--//用户信息-->
+        <!--$("#userInfo").click(function () {-->
+            <!--PageUtils.ajaxSyncHandle(amsCtx + "/user/getUserInfo", {}, "POST", function (result) {-->
+                <!--if (result.resultCode = "000000") {-->
+                    <!--$("#userModel").find("div .col-md-7").each(function (i, e) {-->
+                        <!--var id = $(e).attr("id");-->
+                        <!--if (id == "sex") {-->
+                            <!--if ("M" == result.result[id]) {-->
+                                <!--$(e).html("男");-->
+                            <!--} else {-->
+                                <!--$(e).html("女");-->
+                            <!--}-->
+                        <!--} else {-->
+                            <!--$(e).html(result.result[id]);-->
+                        <!--}-->
+                    <!--});-->
+                <!--}-->
+            <!--});-->
+        <!--});-->
+
+        <!--/**-->
+         <!--* 打开修改框处理-->
+         <!--*/-->
+        <!--$("#changPassword").click(function () {-->
+            <!--PageUtils.clearForm("changePasswordForm", "");-->
+            <!--$("#changePasswordModel").show();-->
+            <!--var form = $("#changePasswordForm");-->
+            <!--var valids = PageUtils.buildValidateRules("changePasswordForm");-->
+            <!--// 初始化新增表单-->
+            <!--form.validate({-->
+                <!--rules: valids["rules"],-->
+                <!--messages: valids["messages"],-->
+                <!--submitHandler: function () {-->
+                    <!--$("#oldPassword").val();-->
+                    <!--$("#newPassword").val();-->
+                    <!--$("#reTypePassword").val();-->
+
+                    <!--var postData = PageUtils.buildSubmitData("changePasswordForm");-->
+                    <!--PageUtils.ajaxSyncHandle(amsCtx + "/user/changePassword", postData, "POST", function (data) {-->
+                        <!--if (data["code"] === "200") {-->
+                            <!--$("#changePasswordModel button[data-btn='close']").click();-->
+                            <!--PagePrompts.success(data["msg"]);-->
+                        <!--} else {-->
+                            <!--PagePrompts.fail(data["msg"]);-->
+                        <!--}-->
+                    <!--});-->
+                <!--}-->
+            <!--});-->
+        <!--});-->
+
+        <!--$("#changePasswordBtn").click(function () {-->
+            <!--$("#changePasswordForm").submit();-->
+        <!--});-->
+
+    <!--});-->
+<!--</script>-->
+</body>
+</html>

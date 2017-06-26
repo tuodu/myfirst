@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorate="~{layouts/layout}">
+<head>
+    <style type="text/css">
+        #owl-demo {
+            width: 747px;
+            height: 350px;
+            margin: 0px;
+        }
+
+        #owl-demo .item {
+            width: 747px;
+            height: 350px;
+            margin: 0px;
+            display: block;
+        }
+
+        #owl-demo img {
+            display: block;
+            width: 100%;
+            height: 350px;
+        }
+    </style>
+</head>
+<body>
+<th:block layout:fragment="page_content">
+    <div class="wrapper">
+        <div class="row states-info">
+            <div class="col-md-3">
+                <div class="panel red-bg">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <i class="fa fa-money"></i>
+                            </div>
+                            <div class="col-xs-8">
+                                <span class="state-title"> 每周捐兵 </span>
+                                <h4> > 100</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel blue-bg">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <i class="fa fa-tag"></i>
+                            </div>
+                            <div class="col-xs-8">
+                                <span class="state-title"> 单人皇冠 </span>
+                                <h4> > 15</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel green-bg">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <i class="fa fa-gavel"></i>
+                            </div>
+                            <div class="col-xs-8">
+                                <span class="state-title">双人皇冠 </span>
+                                <h4> > 2</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="panel yellow-bg">
+                    <div class="panel-body">
+                        <div class="row">
+                            <div class="col-xs-4">
+                                <i class="fa fa-caret-square-o-left"></i>
+                            </div>
+                            <div class="col-xs-8">
+                                <span class="state-title">长老捐兵</span>
+                                <h4> > 400</h4>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="col-md-9" style="width:auto;">
+                <section class="panel">
+                    <header class="panel-heading">
+                        <a href="https://clashroyale.com/"><a class="fa fa-arrow-right">官网链接</a></a>
+                    </header>
+                    <div class="panel-body" style="background-color:black">
+                        <div id="owl-demo" class="owl-carousel">
+                            <a class="item"><img src="/images/index4.jpg" alt=""></a>
+                            <a class="item"><img src="/images/index3.jpg" alt=""></a>
+                            <a class="item"><img src="/images/index2.jpg" alt=""></a>
+                            <a class="item"><img src="/images/index.jpg" alt=""></a>
+                        </div>
+                    </div>
+                </section>
+            </div>
+            <div class="row states-info">
+                <div class="col-md-3" style="width:269px;">
+                    <div style="height: 60px;"></div>
+                    <div class="panel blue-bg">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <i class="fa fa-archive"></i>
+                                </div>
+                                <div class="col-xs-8">
+                                    <span class="state-title">副首领捐兵</span>
+                                    <h4> > 700</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="height: 60px;"></div>
+                    <div class="panel red-bg">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <i class="fa fa-asterisk"></i>
+                                </div>
+                                <div class="col-xs-8">
+                                    <span class="state-title">新人免考核周数</span>
+                                    <h4>1</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div style="height: 60px;"></div>
+                    <div class="panel green-bg">
+                        <div class="panel-body">
+                            <div class="row">
+                                <div class="col-xs-4">
+                                    <i class="fa fa-beer"></i>
+                                </div>
+                                <div class="col-xs-8">
+                                    <span class="state-title">目前部落数</span>
+                                    <h4>3</h4>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>
+
+<th:block layout:fragment="page_script">
+    <script type="text/javascript">
+        jQuery(function ($) {
+
+            $('#owl-demo').owlCarousel({
+                autoPlay: true,
+                navigation: true,
+                paginationNumbers: false,
+                singleItem: true,
+                slideSpeed: 300,
+            });
+
+        });
+    </script>
+</th:block>
+
+</body>
+</html>
